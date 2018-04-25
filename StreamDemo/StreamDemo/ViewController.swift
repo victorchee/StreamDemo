@@ -16,11 +16,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         connectServer("0.0.0.0", port: 12345)
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(2)) {
-            self.sendData("123")
-        }
     }
-
+    
+    @IBAction func sendDataButtonTapped(_ sender: UIButton) {
+        sendData("123")
+    }
+    
     private func connectServer(_ host: String, port: Int) {
         Stream.getStreamsToHost(withName: host, port: port, inputStream: &inputStream, outputStream: &outputStream)
 
