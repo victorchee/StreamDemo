@@ -27,8 +27,6 @@ class ViewController: UIViewController {
 
         inputStream?.delegate = self
         outputStream?.delegate = self
-        inputStream?.schedule(in: RunLoop.main, forMode: .commonModes)
-        outputStream?.schedule(in: RunLoop.main, forMode: .commonModes)
         inputStream?.open()
         outputStream?.open()
     }
@@ -75,8 +73,6 @@ extension ViewController: StreamDelegate {
             print("Stream end encountered")
             inputStream?.close()
             outputStream?.close()
-            inputStream?.remove(from: RunLoop.main, forMode: .commonModes)
-            outputStream?.remove(from: RunLoop.main, forMode: .commonModes)
             
         default: break
         }
